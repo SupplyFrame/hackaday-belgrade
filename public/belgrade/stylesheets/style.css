@@ -61,9 +61,7 @@ body {
 }
 
 #button {
-	/* Rectangle 2: */
 	border: 0.6vmin solid #FFFFFF;
-	/* Register Now: */
 	font-family: Lato-Bold;
 	font-size: 1.5vw;
 	color: #FFFFFF;
