@@ -1,0 +1,70 @@
+body {
+  background: #00000A;
+  padding: 0px;
+  margin: 0px;
+	font-family: Lato-Bold;
+	color: #FFFFFF;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+#main {
+	float: left;
+}
+
+#title{
+	font-family: FoundersGrotesk-Semibold;
+	font-size: 48px;
+	color: #FFFFFF;
+	line-height: 86px;
+	margin-left: 10px;
+}
+
+#subtitle {
+	font-family: FoundersGrotesk-Light;
+	font-size: 48px;
+	color: #FFFFFF;
+	line-height: 86px;
+	margin-left: 10px;
+}
+
+#learnmore {
+	font-family: FoundersGrotesk-Light;
+	font-weight: 100;
+	font-size: 18px;
+	color: #FFFFFF;
+	line-height: 86px;
+	margin-left: 40px;
+}
+
+#learnmore a {
+	text-decoration: none;
+	color: white;
+}
+
+#link {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#button {
+	/* Rectangle 2: */
+	border: 6px solid #FFFFFF;
+	/* Register Now: */
+	font-family: Lato-Bold;
+	font-size: 24px;
+	color: #FFFFFF;
+	line-height: 48px;
+	float: right;
+	margin-right: 30px;
+	margin-top: 3px;
+}
+
+#button a {
+	text-decoration: none;
+	color: white;
+	margin: 0px 60px 0px 60px;
+}
