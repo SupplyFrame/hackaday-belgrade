@@ -27,7 +27,7 @@ body {
 }
 
 #title{
-	font-family: FoundersGrotesk-Semibold;
+	font-family: FoundersGroteskWeb-Semibold;
 	font-size: 48px;
 	color: #FFFFFF;
 	line-height: 86px;
@@ -35,7 +35,7 @@ body {
 }
 
 #subtitle {
-	font-family: FoundersGrotesk-Light;
+	font-family: FoundersGroteskWeb-Light;
 	font-size: 48px;
 	color: #FFFFFF;
 	line-height: 86px;
@@ -43,7 +43,7 @@ body {
 }
 
 #learnmore {
-	font-family: FoundersGrotesk-Light;
+	font-family: FoundersGroteskWeb-Light;
 	font-weight: 100;
 	font-size: 18px;
 	color: #FFFFFF;
