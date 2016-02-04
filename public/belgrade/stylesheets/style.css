@@ -26,12 +26,21 @@ body {
 	float: left;
 }
 
+.content {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #00000A;
+}
+
 #title{
 	font-family: FoundersGroteskWeb-Semibold;
 	font-size: 2.5vw;
 	color: #FFFFFF;
 	line-height: 3vw;
 	margin-left: 10px;
+    position: absolute;
+    bottom: 0;
 }
 
 #subtitle {
@@ -64,12 +73,11 @@ body {
 	border: 0.6vmin solid #FFFFFF;
 	font-family: Lato, Helvetica, sans-serif;
 	font-weight: bold;
-	font-size: 1.5vw;
+	font-size: 1.2vw;
 	color: #FFFFFF;
 	line-height: 3vw;
 	float: right;
-	margin-right: 20px;
-	margin-top: 3px;
+	margin: 18px 20px 18px 0;
 }
 
 #button a {
@@ -77,3 +85,38 @@ body {
 	color: white;
 	margin: 0px 3vw 0px 3vw;
 }
+
+
+@media (max-width: 900px) {
+    .content {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding-top: 30px;
+    }
+    #main {
+        width: 100%;
+    }
+    #learnmore {
+        display: block;
+        font-size: 20px;
+    }
+    #title {
+        font-size: 40px;
+        position: relative;
+    }
+    #subtitle {
+        font-size: 30px;
+    }
+    #button {
+        font-size: 25px;
+        padding: 20px 30px;
+        margin: 20px auto;
+        float: none;
+        width: 80%;
+        position: relative;
+        clear: both;
+    }
+}
+
+
