@@ -158,22 +158,3 @@ var size = {
   width: window.innerWidth || document.body.clientWidth,
   height: window.innerHeight || document.body.clientHeight
 }
-
-var ajaxGet = function(url, callback) {
-	var xmlhttp = new XMLHttpRequest(),
-    	method = 'GET',
-    	url = url;
-
-	xmlhttp.open(method, url, true);
-	xmlhttp.onreadystatechange = function () {
-    	if (xmlhttp.readyState !== XMLHttpRequest.DONE) {
-        	return;
-    	}
-    	if (xmlhttp.status !== 200) {
-        	return;
-    	}
-    	callback(JSON.parse(xmlhttp.responseText));
-	};
-	xmlhttp.send();
-
-}
