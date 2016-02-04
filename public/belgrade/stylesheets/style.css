@@ -31,23 +31,20 @@ body {
     bottom: 0;
     width: 100%;
     background-color: #00000A;
+    padding: 10px 0;
 }
 
 #title{
 	font-family: FoundersGroteskWeb-Semibold;
 	font-size: 2.5vw;
 	color: #FFFFFF;
-	line-height: 3vw;
 	margin-left: 10px;
-    position: absolute;
-    bottom: 0;
 }
 
 #subtitle {
 	font-family: FoundersGroteskWeb-Light;
 	font-size: 2.5vw;
 	color: #FFFFFF;
-	line-height: 3vw;
 	margin-left: 10px;
 }
 
@@ -55,7 +52,6 @@ body {
 	font-family: FoundersGroteskWeb-Light;
 	font-size: 1vw;
 	color: #FFFFFF;
-	line-height: 86px;
 	margin-left: 1vw;
 }
 
@@ -75,9 +71,9 @@ body {
 	font-weight: bold;
 	font-size: 1.2vw;
 	color: #FFFFFF;
-	line-height: 3vw;
 	float: right;
-	margin: 18px 20px 18px 0;
+	margin: 0 20px 0 0;
+    padding: 10px 30px;
 }
 
 #button a {
@@ -96,6 +92,7 @@ body {
     }
     #main {
         width: 100%;
+        margin-bottom: 20px;
     }
     #learnmore {
         display: block;
