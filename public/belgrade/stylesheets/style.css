@@ -62,7 +62,8 @@ body {
 
 #button {
 	border: 0.6vmin solid #FFFFFF;
-	font-family: Lato-Bold;
+	font-family: Lato;
+	font-weight: bold;
 	font-size: 1.5vw;
 	color: #FFFFFF;
 	line-height: 3vw;
