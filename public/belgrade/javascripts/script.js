@@ -98,18 +98,26 @@ function g2Handler(x, y) {
 
 function g3Handler(x, y) {
 	var elems = kNN(x, y, 3);
-	for (var i=0; i < elems.length; i++) {
+	for (var i=5; i < elems.length; i++) {
 		off(elems[i]);
+	}
+}
+
+function drawHandler() {
+	var elems = getAll();
+	for(var i = 5; i < elems.length; i++) {
+		elems[i].onmouseover=function(obj){
+			obj.target.setAttribute("fill", "white");
+		}
 	}
 }
 
 function setHandler() {
 	var elems = getAll();
-	for(var i = 4; i < elems.length; i++) {
+	for(var i = 5; i < elems.length; i++) {
 		elems[i].onclick=function(obj){
 			x = parseInt(obj.target.getAttribute("data-x"));
 			y = parseInt(obj.target.getAttribute("data-y"));
-			console.log(GAME);
 			switch(GAME) {
 				case 1:
 					g1Handler(x,y);
@@ -119,6 +127,9 @@ function setHandler() {
 					break;
 				case 3:
 					g3Handler(x,y);
+					break;
+				case 4:
+					drawHandler();
 					break;
 				default:
 					g1Handler(x, y);
@@ -163,8 +174,13 @@ onPageLoad(function(event) {
 		setHandler();
 	}
 
-	getElem(0, 2).onclick = function(obj) {
+	getElem(0, 3).onclick = function(obj) {
 		GAME = 3;
+		setHandler();
+	}
+
+	getElem(0, 4).onclick = function(obj) {
+		GAME = 4;
 		setHandler();
 	}
 
