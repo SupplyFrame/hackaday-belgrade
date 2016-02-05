@@ -4,7 +4,7 @@ var init = function() {
 	// generate background
 
 	var x_max = size.width;
-	var y_max = Math.floor(size.height*0.92);
+	var y_max = Math.floor(size.height*0.95);
 
 	var graph = $('#bitmap').add('svg').attr('width', x_max).attr('height', y_max);
 
