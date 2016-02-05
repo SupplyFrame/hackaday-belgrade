@@ -1,7 +1,6 @@
 var CIRCLE_RADIUS = 10;
 
-onPageLoad(function(event) {
-
+var init = function() {
 	// generate background
 
 	var x_max = size.width;
@@ -14,4 +13,9 @@ onPageLoad(function(event) {
 			graph.circle().class("bg").cx(i).cy(j).r(CIRCLE_RADIUS - 2).stroke("white").strokewidth(1).fill((Math.random() > 0.5) ? "black" : "white");
 		}
 	}
+}
+
+
+onPageLoad(function(event) {
+	init();
 });
