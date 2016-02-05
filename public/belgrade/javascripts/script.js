@@ -18,6 +18,16 @@ function init() {
 	}
 }
 
+function xmax() {
+	return Math.floor((size.width-RADIUS)/(2*(RADIUS + 1)));
+}
+
+function ymax() {
+	return Math.floor((size.height*0.95-RADIUS)/(2*(RADIUS + 1)));
+}
+
+// dot access
+
 function getElem(x, y) {
 	return document.querySelectorAll("[data-x='" + x + "'][data-y='" + y + "']")[0];
 }
@@ -33,6 +43,18 @@ function getColumn(y) {
 function getAll() {
 	return document.getElementsByClassName("dot");
 }
+
+function kNN(x,y,k) {
+	var result = [];
+	for (i = Math.max(x-k, 0); i <= Math.min(x+k, xmax()); i++) {
+		for (j = Math.max(y-k, 0); j <= Math.min(y+k, ymax()); j++) {
+			result.push(getElem(i, j));
+		}
+	}
+	return result;
+}
+
+// dot control
 
 function on(el) {
 	el.setAttribute("fill", "white");
@@ -53,7 +75,9 @@ function reset() {
 	}
 }
 
-function update(x, y) {
+// fun
+
+function g1Handler(x, y) {
 	var elems = getRow(x);
 	for (var i=0; i<elems.length; i++) {
 		off(elems[i]);
@@ -63,6 +87,37 @@ function update(x, y) {
 		flip(elems[i]);
 	}
 }
+
+function g2Handler(x, y) {
+	var elems = kNN(x, y, 3);
+	for (var i=0; i < elems.length; i++) {
+		flip(elems[i]);
+	}
+}
+
+function defaultG1() {
+	var elems = getAll();
+	for(var i = 3; i < elems.length; i++) {
+		elems[i].onclick=function(obj){
+			x = parseInt(obj.target.getAttribute("data-x"));
+			y = parseInt(obj.target.getAttribute("data-y"));
+			g1Handler(x,y);
+		}
+	}
+}
+
+function defaultG2() {
+	var elems = getAll();
+	for(var i = 3; i < elems.length; i++) {
+		elems[i].onclick=function(obj){
+			x = parseInt(obj.target.getAttribute("data-x"));
+			y = parseInt(obj.target.getAttribute("data-y"));
+			g2Handler(x,y);
+		}
+	}
+}
+
+// 
 
 onPageLoad(function(event) {
 
@@ -74,14 +129,15 @@ onPageLoad(function(event) {
 		reset();
 	}
 
-	var elems = getAll();
-	for(var i = 1; i < elems.length; i++) {
-    	elems[i].onclick=function(obj){
-    		x = parseInt(obj.target.getAttribute("data-x"));
-    		y = parseInt(obj.target.getAttribute("data-y"));
-    		update(x,y);
-    	}
+	getElem(0, 1).onclick = function(obj) {
+		defaultG1();
 	}
+
+	getElem(0, 2).onclick = function(obj) {
+		defaultG2();
+	}
+
+	defaultG1();
 
 });
 
