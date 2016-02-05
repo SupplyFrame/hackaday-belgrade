@@ -6,9 +6,14 @@ function init() {
 
 	var graph = $('#bitmap').add('svg').attr('width', x_max).attr('height', y_max);
 
-	for (var i=RADIUS; i<x_max; i+=RADIUS*2 + 2) {
-	for (var j=RADIUS; j<y_max; j+=RADIUS*2 + 2) {
-			graph.circle().class("dot").attr("data-x", i).attr("data-y", j).cx(i).cy(j).r(RADIUS - 2).stroke("white").strokewidth(1).fill((Math.random() > 0.5) ? "black" : "white");
+	for (var i=RADIUS; i<x_max; i+=2*(RADIUS + 1)) {
+	for (var j=RADIUS; j<y_max; j+=2*(RADIUS + 1)) {
+			graph.circle().class("dot")
+			.attr("data-x", (i-RADIUS)/(2*(RADIUS + 1))).attr("data-y", (j-RADIUS)/(2*(RADIUS + 1)))
+			.cx(i).cy(j)
+			.r(RADIUS - 2)
+			.stroke("white")
+			.strokewidth(1).fill((Math.random() > 0.5) ? "black" : "white");
 		}
 	}
 }
@@ -63,7 +68,7 @@ onPageLoad(function(event) {
 
 	init();
 
-	getElem(RADIUS, RADIUS).onclick = function(obj) {
+	getElem(0, 0).onclick = function(obj) {
 		x = obj.target.getAttribute("data-x");
 		y = obj.target.getAttribute("data-y");
 		reset();
@@ -77,5 +82,6 @@ onPageLoad(function(event) {
     		update(x,y);
     	}
 	}
+
 });
 
