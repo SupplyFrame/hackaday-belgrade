@@ -133,6 +133,22 @@ onPageLoad(function(event) {
 
 	init();
 
+	// ux
+
+	var elems = getAll();
+	for (var i=0; i<elems.length; i++) {
+		elems[i].onmouseover=function(obj){
+			obj.target.setAttribute("stroke-width", "2");
+			obj.target.setAttribute("fill-opacity", "0.9");
+		}
+		elems[i].onmouseout=function(obj){
+			obj.target.setAttribute("stroke-width", "1");
+			obj.target.setAttribute("fill-opacity", "1.0");
+		}
+	}
+
+	// control
+
 	getElem(0, 0).onclick = function(obj) {
 		reset();
 	}
