@@ -121,7 +121,7 @@ function setHandler() {
 					g3Handler(x,y);
 					break;
 				default:
-					g2Handler(x, y);
+					g1Handler(x, y);
 			}
 		}
 	}
