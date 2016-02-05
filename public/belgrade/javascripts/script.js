@@ -15,7 +15,6 @@ var init = function() {
 	}
 }
 
-
 onPageLoad(function(event) {
 	init();
 });
