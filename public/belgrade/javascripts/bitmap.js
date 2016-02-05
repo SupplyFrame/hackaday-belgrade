@@ -150,6 +150,11 @@ Element.prototype.class = function(value) {
 	return this.attr('class', value);
 }
 
+Element.prototype.onclick = function(value) {
+	return this.attr('onclick', value);
+}
+
+
 // 
 // utils
 // 
