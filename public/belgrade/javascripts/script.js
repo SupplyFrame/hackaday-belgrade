@@ -124,6 +124,10 @@ function blink() {
     starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
     el = getElem(startx, starty);
     flip(el);
+    flip(getElem(startx, starty+1));
+    flip(getElem(startx, starty-1));
+    flip(getElem(startx+1, starty-1));
+    flip(getElem(startx-1, starty));
 }
 
 
