@@ -1,5 +1,6 @@
 var RADIUS = 10;
 var GAME = 0;
+var TOGGLE = false;
 
 function init() {
 	var x_max = size.width;
@@ -107,7 +108,13 @@ function drawHandler() {
 	var elems = getAll();
 	for(var i = 5; i < elems.length; i++) {
 		elems[i].onmouseover=function(obj){
-			obj.target.setAttribute("fill", "white");
+			if (!TOGGLE) {
+				obj.target.setAttribute("fill", "white");
+				TOGGLE = true;
+			}
+		}
+		elems[i].click=function(obj){
+			TOGGLE = !TOGGLE;
 		}
 	}
 }
@@ -133,6 +140,7 @@ function setHandler() {
 					break;
 				default:
 					g1Handler(x, y);
+					// drawHandler();
 			}
 		}
 	}
