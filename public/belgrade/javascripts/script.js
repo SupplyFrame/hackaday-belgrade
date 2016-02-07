@@ -120,8 +120,8 @@ function drawHandler() {
 }
 
 function blink() {
-    startx = Math.floor(xmax()*Math.random())
-    starty = Math.floor(ymax()*Math.random())
+    startx = Math.floor(xmax()*Math.abs(normal(0.5,0.75)));
+    starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
     el = getElem(startx, starty);
     flip(el);
 }
@@ -148,10 +148,24 @@ function setHandler() {
 		break;
 	    default:
 		g1Handler(x, y);
-		// drawHandler();
 	    }
 	}
     }
+}
+
+// utils
+
+function normal(mu, sigma, nsamples){
+    if(!nsamples) nsamples = 6
+    if(!sigma) sigma = 1
+    if(!mu) mu=0
+
+    var run_total = 0
+    for(var i=0 ; i<nsamples ; i++){
+	run_total += Math.random()
+    }
+
+    return sigma*(run_total - nsamples/2)/(nsamples/2) + mu
 }
 
 // 
