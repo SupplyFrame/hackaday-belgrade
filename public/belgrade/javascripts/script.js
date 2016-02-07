@@ -106,7 +106,7 @@ function g3Handler(x, y) {
 
 function drawHandler() {
     var elems = getAll();
-    for(var i = 6; i < elems.length; i++) {
+    for(var i = 7; i < elems.length; i++) {
 	elems[i].onmouseover=function(obj){
 	    if (!TOGGLE) {
 		obj.target.setAttribute("fill", "white");
@@ -119,7 +119,7 @@ function drawHandler() {
     }
 }
 
-function blink() {
+function pentominoFlip() {
     startx = Math.floor(xmax()*Math.abs(normal(0.5,0.75)));
     starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
     el = getElem(startx, starty);
@@ -130,10 +130,17 @@ function blink() {
     flip(getElem(startx-1, starty));
 }
 
+function bitFlip() {
+    startx = Math.floor(xmax()*Math.abs(normal(0.5,0.75)));
+    starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
+    el = getElem(startx, starty);
+    flip(el);
+}
+
 
 function setHandler() {
     var elems = getAll();
-    for(var i = 6; i < elems.length; i++) {
+    for(var i = 7; i < elems.length; i++) {
 	elems[i].onclick=function(obj){
 	    x = parseInt(obj.target.getAttribute("data-x"));
 	    y = parseInt(obj.target.getAttribute("data-y"));
@@ -194,8 +201,10 @@ onPageLoad(function(event) {
 
     // control
 
-    getElem(0, 5).onclick = function(obj) {
+    getElem(0,0).onclick = function(obj) {
+	GAME = 0;
 	reset();
+	setInterval(bitFlip, 10);
     }
 
     getElem(0, 1).onclick = function(obj) {
@@ -218,11 +227,14 @@ onPageLoad(function(event) {
 	setHandler();
     }
 
-    getElem(0,0).onclick = function(obj) {
-	GAME = 5;
+    getElem(0, 5).onclick = function(obj) {
 	reset();
-	setInterval(blink, 10);
     }
+
+    getElem(0,6).onclick = function(obj) {
+	GAME = 6;
+	setInterval(pentominoFlip, 10);
+    } 
     
     setHandler();
 
