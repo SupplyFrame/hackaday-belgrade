@@ -148,10 +148,10 @@ function pentominoFlip() {
     starty = nrandy();
     el = getElem(startx, starty);
     flip(el);
-    flip(getElem(startx, starty+1));
-    flip(getElem(startx, starty-1));
-    flip(getElem(startx+1, starty-1));
-    flip(getElem(startx-1, starty));
+    flip(getElem(startx, Math.min(starty+1, ymax())));
+    flip(getElem(startx, Math.max(0, starty-1)));
+    flip(getElem(Math.min(startx+1, xmax()), Math.max(starty-1, 0)));
+    flip(getElem(Math.max(0, startx-1), starty));
 }
 
 function bitFlip() {
