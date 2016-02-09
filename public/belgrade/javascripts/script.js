@@ -21,11 +21,27 @@ function init() {
 }
 
 function xmax() {
-    return Math.floor((size.width-RADIUS)/(2*(RADIUS + 1)));
+    return Math.floor((size.width-RADIUS)/(2*(RADIUS + 1))) - 1;
 }
 
 function ymax() {
-    return Math.floor((size.height*0.95-RADIUS)/(2*(RADIUS + 1)));
+    return Math.floor((size.height*0.95-RADIUS)/(2*(RADIUS + 1))) - 1;
+}
+
+function randx() {
+    return Math.floor(Math.random() * xmax());
+}
+
+function randy() {
+    return Math.floor(Math.random() * ymax());
+}
+
+function nrandx() {
+    return Math.floor(xmax()*Math.abs(normal(0.5,0.75))%xmax());
+}
+
+function nrandy() {
+    return Math.floor(ymax()*Math.abs(normal(0.5,0.75))%ymax());
 }
 
 // dot access
@@ -62,8 +78,16 @@ function on(el) {
     el.setAttribute("fill", "white");
 }
 
+function isOn(el) {
+    return (el.getAttribute("fill") == "white");
+}
+
 function off(el) {
     el.setAttribute("fill", "black");
+}
+
+function isOff(el) {
+    return (el.getAttribute("fill") == "black");
 }
 
 function flip(el) {
@@ -106,7 +130,7 @@ function g3Handler(x, y) {
 
 function drawHandler() {
     var elems = getAll();
-    for(var i = 7; i < elems.length; i++) {
+    for(var i = 8; i < elems.length; i++) {
 	elems[i].onmouseover=function(obj){
 	    if (!TOGGLE) {
 		obj.target.setAttribute("fill", "white");
@@ -120,8 +144,8 @@ function drawHandler() {
 }
 
 function pentominoFlip() {
-    startx = Math.floor(xmax()*Math.abs(normal(0.5,0.75)));
-    starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
+    startx = nrandx();
+    starty = nrandy();
     el = getElem(startx, starty);
     flip(el);
     flip(getElem(startx, starty+1));
@@ -131,16 +155,39 @@ function pentominoFlip() {
 }
 
 function bitFlip() {
-    startx = Math.floor(xmax()*Math.abs(normal(0.5,0.75)));
-    starty = Math.floor(ymax()*Math.abs(normal(0.5,0.75)));
+    startx = nrandx();
+    starty = nrandy();
     el = getElem(startx, starty);
     flip(el);
 }
 
+function life() {
+    x = randx();
+    y = randy();
+    el = getElem(x, y);   
+    count = neighAlive(x, y);
+    if (isOn(el) && (count < 2 || count > 3)) {
+	off(el);
+    } else if (isOff(el) && (count == 3)) {
+	on(el);
+    }
+}
+
+function neighAlive(x, y) {
+    var count = 0;
+    for (var i=Math.max(0, x-1); i<= Math.min(x+1, xmax()); i++) {
+	for (var j=Math.max(0, y-1); j<=Math.min(y+1, ymax()); j++) {
+	    if (isOn(getElem(i,j))) {
+		count = count + 1;
+	    }
+	}
+    }
+    return count;
+}
 
 function setHandler() {
     var elems = getAll();
-    for(var i = 7; i < elems.length; i++) {
+    for(var i = 8; i < elems.length; i++) {
 	elems[i].onclick=function(obj){
 	    x = parseInt(obj.target.getAttribute("data-x"));
 	    y = parseInt(obj.target.getAttribute("data-y"));
@@ -202,40 +249,42 @@ onPageLoad(function(event) {
     // control
 
     getElem(0,0).onclick = function(obj) {
-	GAME = 0;
 	reset();
 	setInterval(bitFlip, 10);
     }
 
     getElem(0, 1).onclick = function(obj) {
+	setInterval(life, 10);
+    }
+
+    getElem(0, 2).onclick = function(obj) {
+	setInterval(pentominoFlip, 10);
+    }
+    
+    getElem(0, 3).onclick = function(obj) {
 	GAME = 1;
 	setHandler();
     }
 
-    getElem(0, 2).onclick = function(obj) {
+    getElem(0, 4).onclick = function(obj) {
 	GAME = 2;
 	setHandler();
     }
 
-    getElem(0, 3).onclick = function(obj) {
+    getElem(0, 5).onclick = function(obj) {
 	GAME = 3;
 	setHandler();
     }
 
-    getElem(0, 4).onclick = function(obj) {
+    getElem(0, 6).onclick = function(obj) {
 	GAME = 4;
 	setHandler();
     }
 
-    getElem(0, 5).onclick = function(obj) {
+    getElem(0,7).onclick = function(obj) {
 	reset();
     }
 
-    getElem(0,6).onclick = function(obj) {
-	GAME = 6;
-	setInterval(pentominoFlip, 10);
-    } 
-    
     setHandler();
 
 });
