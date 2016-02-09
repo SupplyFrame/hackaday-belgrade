@@ -1,8 +1,8 @@
 # Hackaday | Belgrade 
 
-Hackaday | Belgrade is a conference that will take place on April 2016 (to learn more check out: hackaday.io/belgrade)
+<a href="https://hackaday.io/belgrade">Hackaday | Belgrade</a> is a conference that will take place on April 2016 in Belgrade, Serbia.
 
-This project represents the source code of the hackaday.io/belgrade teaser webpage along with it's interactive cellular automata game (in public/belgrade/javascripts).
+This project represents the source code of the conference homepage, along with it's interactive cellular automata game (in public/belgrade/javascripts).
 
 Feel free to fork and expand on the idea!
 
