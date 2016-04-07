@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/belgrade', routes);
+app.use('/belgrade/stream', routes);
 app.use('/stream', routes);
 
 // catch 404 and forward to error handler
