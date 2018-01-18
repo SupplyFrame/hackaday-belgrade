@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/2016', function(req, res, next) {
-  res.render('2016', { title: 'Express' });
+  res.render('index', { title: 'Express' });
 });
 
 router.get('/2018', function(req, res, next) {
