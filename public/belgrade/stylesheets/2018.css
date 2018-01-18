@@ -46,6 +46,8 @@ svg {
 	width: 100vw;
 	height: 100vh;
 	color: white;
+	z-index: 1;
+	position: absolute;
 }
 
 body {
@@ -80,8 +82,10 @@ text {
 	font-size: 1.5vw;
 	color: #FFFFFF;
 	float: right;
-	margin-top: -580px;
-	margin-right: 150px;
+	margin-top: 48vh;
+	margin-right: 8vw;
+	z-index: 10;
+	position: relative;
 	/*margin-left: 10px;*/
 }
 

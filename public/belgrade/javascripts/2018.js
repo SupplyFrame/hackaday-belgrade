@@ -1,5 +1,7 @@
-//var palette = ["#0095DB","#EE6352","#F0A202","#50B748","#61707D"]
-var palette = ["white", "gray"]
+// var palette = ["white", "gray"]
+// var palette = ["#0039A6", "#FF6319", "#6CBE45", "#996633", "#A7A9AC", "#FCCC0A", "#808183", "#EE352E", "#00933C", "#B933AD"]
+
+var palette = ["white", "#808183", "#A7A9AC", "#EE352E"]
 
 var xmax = window.innerWidth
 var ymax = window.innerHeight	
@@ -95,8 +97,8 @@ class Line {
 			style: "stroke-width:0"
 		}));
 		// document.getElementById('results').appendChild(this.addSVG('text', {
-		// 	x: this.x1,
-		// 	y: this.y1,
+		// 	x: this.x1 + 10,
+		// 	y: this.y1 + 10,
 		// 	fill: color,
 		// })).appendChild(document.createTextNode("(" + this.x1 + "," + this.y1 + ")"));
 
@@ -120,10 +122,10 @@ render = function() {
 		var x = Math.floor(xmax*Math.random())
 		var y = Math.floor(ymax*Math.random())
 
-		for (var i=0; i<128; i++) {
+		for (var i=0; i<96; i++) {
 			
 			var angle = rndAngle()
-			var line = new Line(x, y, angle, len, 2)
+			var line = new Line(x, y, angle, len, 1)
 
 			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.2*ymax, 0.8*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
