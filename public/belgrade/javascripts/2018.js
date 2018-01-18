@@ -1,4 +1,5 @@
-var palette = ["#0095DB","#EE6352","#F0A202","#50B748","#61707D"]
+//var palette = ["#0095DB","#EE6352","#F0A202","#50B748","#61707D"]
+var palette = ["white", "gray"]
 
 var xmax = window.innerWidth
 var ymax = window.innerHeight	
@@ -38,8 +39,8 @@ class Line {
 		}
 	}
 
-	inBounds(xmax, ymax) {
-		return (this.x1 > 0 && this.x1 < xmax) && (this.x2 > 0 && this.x2 < xmax) && (this.y1 > 0 && this.y1 < ymax) && (this.y2 > 0 && this.y2 < ymax)
+	inBounds(xmin, xmax, ymin, ymax) {
+		return (this.x1 > xmin && this.x1 < xmax) && (this.x2 > xmin && this.x2 < xmax) && (this.y1 > ymin && this.y1 < ymax) && (this.y2 > ymin && this.y2 < ymax)
 	}
 
 	addSVG(tag, attrs) {
@@ -56,7 +57,7 @@ class Line {
 				from: this.x1,
 				to: this.x2,
 				dur: this.duration + "s",
-				repeatCount: "indefinite"
+				repeatCount: 1
 			})
 			el.appendChild(animate)
 
@@ -67,7 +68,7 @@ class Line {
 				from: this.y1,
 				to: this.y2,
 				dur: this.duration + "s",
-				repeatCount: "indefinite"
+				repeatCount: 1
 			})
 			el.appendChild(animate)
 
@@ -77,25 +78,26 @@ class Line {
 	}
 
 	render(dom_element) {
+		var color = rndColor()
 		document.getElementById(dom_element).appendChild(this.addSVG("line", {
 			x1: this.x1,
 			y1: this.y1,
 			x2: this.x2,
 			y2: this.y2,
-			style: "stroke:" + this.color + ";stroke-width:" + this.width + ";opacity:1.0"
+			style: "stroke:" + color + ";stroke-width:" + this.width + ";opacity:1.0"
 		}));	
 		document.getElementById(dom_element).appendChild(this.addSVG("circle", {
 			cx: this.x1,
 			cy: this.y1,
 			r: 6,
 			stroke: "none",
-			fill: "white",
+			fill: color,
 			style: "stroke-width:0"
 		}));
 		// document.getElementById('results').appendChild(this.addSVG('text', {
 		// 	x: this.x1,
 		// 	y: this.y1,
-		// 	fill: "white"
+		// 	fill: color,
 		// })).appendChild(document.createTextNode("(" + this.x1 + "," + this.y1 + ")"));
 
 	}
@@ -123,7 +125,7 @@ render = function() {
 			var angle = rndAngle()
 			var line = new Line(x, y, angle, len, 2)
 
-			if (matchFound && line.inBounds(xmax, ymax)) {
+			if (matchFound && line.inBounds(0.2*xmax, 0.8*xmax, 0.2*ymax, 0.8*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
 				line.render('results')
 				path.push(line)
