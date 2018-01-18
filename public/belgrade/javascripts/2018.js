@@ -1,3 +1,4 @@
+var palette = ["#0095DB","#EE6352","#F0A202","#50B748","#61707D"]
 
 var xmax = window.innerWidth
 var ymax = window.innerHeight	
@@ -10,24 +11,8 @@ function rndAngle() {
 	return Math.random() < 0.6 ? Math.floor(Math.random()*8)*45 : Math.floor(Math.random()*4)*90;
 }
 
-renderText = function(params, text) {
-		document.getElementById('results').appendChild(addSVG('text', params)).appendChild(document.createTextNode(text.substring(0,120)))
-}
-
-addSVG = function(tag, attrs) {
-	var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
-	for (var k in attrs) {
-    	el.setAttribute(k, attrs[k]);
-	}
-	return el;
-}
-
-textNode = function(x, y, text) {
-	renderText({
-		x: x,
-		y: y,
-		fill: "white"
-	}, text)
+rndColor = function() {
+	return palette[Math.floor(Math.random()*palette.length)]
 }
 
 class Line {
@@ -99,7 +84,7 @@ class Line {
 			y2: this.y2,
 			style: "stroke:" + this.color + ";stroke-width:" + this.width + ";opacity:1.0"
 		}));	
-		document.getElementById(dom_element).appendChild(addSVG("circle", {
+		document.getElementById(dom_element).appendChild(this.addSVG("circle", {
 			cx: this.x1,
 			cy: this.y1,
 			r: 6,
@@ -107,6 +92,11 @@ class Line {
 			fill: "white",
 			style: "stroke-width:0"
 		}));
+		// document.getElementById('results').appendChild(this.addSVG('text', {
+		// 	x: this.x1,
+		// 	y: this.y1,
+		// 	fill: "white"
+		// })).appendChild(document.createTextNode("(" + this.x1 + "," + this.y1 + ")"));
 
 	}
 
@@ -137,8 +127,6 @@ render = function() {
 				line.width = 1 + Math.floor(Math.random()*5)
 				line.render('results')
 				path.push(line)
-				// textNode(line.x1 + 8, line.y1 + 16, "(" + line.x1 + "," + line.y1 + ")")
-				// textNode(line.x2 + 8, line.y2 + 16, "(" + line.x2 + "," + line.y2 + ")")
 				x = line.x2
 				y = line.y2
 			}
