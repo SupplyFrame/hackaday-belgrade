@@ -84,18 +84,22 @@ text {
 	float: right;
 	margin-top: 48vh;
 	margin-right: 8vw;
+	line-height: 1.8vw;
 	z-index: 10;
 	position: relative;
 	/*margin-left: 10px;*/
+	color: #A7A9AC;
 }
 
 .title h1 {
 	font-family: FoundersGroteskWeb-Semibold;
 	font-size: 2.0vw;
+	color: white;
 }
 
 .title a {
-	color: white;
+	color: #EE352E;
 	font-size: 1.0vw;
+	text-decoration: none;
 }
 

@@ -127,7 +127,7 @@ render = function() {
 			var angle = rndAngle()
 			var line = new Line(x, y, angle, len, 1)
 
-			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.2*ymax, 0.8*ymax)) {
+			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.1*ymax, 0.9*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
 				line.render('results')
 				path.push(line)
