@@ -56,3 +56,42 @@ text {
 	font-family: "Helvetica";
 	font-size: 8px;
 }
+
+@font-face {
+    font-family: 'FoundersGroteskWeb-Semibold';
+    src: url('/belgrade/fonts/FoundersGroteskWeb-Semibold.eot');
+    src: url('/belgrade/fonts/FoundersGroteskWeb-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('/belgrade/fonts/FoundersGroteskWeb-Semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FoundersGroteskWeb-Light';
+    src: url('/belgrade/fonts/FoundersGroteskWeb-Light.eot');
+    src: url('/belgrade/fonts/FoundersGroteskWeb-Light.eot?#iefix') format('embedded-opentype'),
+        url('/belgrade/fonts/FoundersGroteskWeb-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title {
+	font-family: FoundersGroteskWeb-Light;
+	font-size: 1.5vw;
+	color: #FFFFFF;
+	float: right;
+	margin-top: -580px;
+	margin-right: 150px;
+	/*margin-left: 10px;*/
+}
+
+.title h1 {
+	font-family: FoundersGroteskWeb-Semibold;
+	font-size: 2.0vw;
+}
+
+.title a {
+	color: white;
+	font-size: 1.0vw;
+}
+

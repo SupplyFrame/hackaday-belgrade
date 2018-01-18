@@ -109,28 +109,33 @@ class Line {
 }
 
 render = function() {
+
+	console.log("START")
 	
 	var len = Math.floor(Math.max(20, Math.min(xmax, ymax)/10))
 	var path = []
 
 	for (var it = 0; it < 4; it++) {
 		
-		var x = Math.floor(xmax * Math.random())
-		var y = Math.floor(ymax * Math.random())
+		var x = Math.floor(xmax*Math.random())
+		var y = Math.floor(ymax*Math.random())
 
 		for (var i=0; i<128; i++) {
-			
-			var matchFound = true
 			
 			var angle = rndAngle()
 			var line = new Line(x, y, angle, len, 2)
 
-			if (matchFound && line.inBounds(0.2*xmax, 0.8*xmax, 0.2*ymax, 0.8*ymax)) {
+			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.2*ymax, 0.8*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
 				line.render('results')
 				path.push(line)
 				x = line.x2
 				y = line.y2
+			} else {
+				if (Math.random() < 0.1) {
+					x = Math.floor(xmax*Math.random())
+					y = Math.floor(ymax*Math.random())
+				}
 			}
 
 		}
