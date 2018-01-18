@@ -1,6 +1,3 @@
-// var palette = ["white", "gray"]
-// var palette = ["#0039A6", "#FF6319", "#6CBE45", "#996633", "#A7A9AC", "#FCCC0A", "#808183", "#EE352E", "#00933C", "#B933AD"]
-
 var palette = ["white", "#808183", "#A7A9AC", "#EE352E"]
 
 var xmax = window.innerWidth
@@ -111,8 +108,6 @@ class Line {
 }
 
 render = function() {
-
-	console.log("START")
 	
 	var len = Math.floor(Math.max(20, Math.min(xmax, ymax)/10))
 	var path = []
