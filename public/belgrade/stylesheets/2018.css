@@ -49,7 +49,10 @@ svg {
 }
 
 body {
-	background-color: #EB2B36;
-/*	background-color: #F3EEEF;
 	background-color: black;
-*/}
+}
+
+text {
+	font-family: "Helvetica";
+	font-size: 10px;
+}
