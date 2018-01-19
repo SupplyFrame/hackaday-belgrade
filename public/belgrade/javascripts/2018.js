@@ -117,13 +117,16 @@ render = function() {
 		var x = Math.floor(xmax*Math.random())
 		var y = Math.floor(ymax*Math.random())
 
-		for (var i=0; i<96; i++) {
+		var rendered = 0
+
+		while (rendered < 64) {
 			
 			var angle = rndAngle()
 			var line = new Line(x, y, angle, len, 1)
 
 			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.1*ymax, 0.9*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
+				rendered++
 				line.render('results')
 				path.push(line)
 				x = line.x2
@@ -138,3 +141,4 @@ render = function() {
 		}
 	}
 }
+
