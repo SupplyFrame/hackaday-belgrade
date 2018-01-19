@@ -83,8 +83,8 @@ class Line {
 		document.getElementById(dom_element).appendChild(this.addSVG("line", {
 			x1: this.x1,
 			y1: this.y1,
-			x2: (this.duration > 0) ? this.x1 : this.x1,
-			y2: (this.duration > 0) ? this.y1 : this.y1,
+			x2: (this.duration > 0) ? this.x1 : this.x2,
+			y2: (this.duration > 0) ? this.y1 : this.y2,
 			style: "stroke:" + color + ";stroke-width:" + this.width + ";opacity:1.0"
 		}));	
 		document.getElementById(dom_element).appendChild(this.addSVG("circle", {
