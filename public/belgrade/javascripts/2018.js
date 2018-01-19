@@ -121,7 +121,8 @@ render = function() {
 	// empty .results 
 
 	clear("results")
-	
+	document.getElementById("results").style.animation = "pulse 6s infinite"
+
 	var len = Math.floor(Math.max(20, Math.min(xmax, ymax)/10))
 	var path = []
 
