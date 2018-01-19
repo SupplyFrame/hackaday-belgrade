@@ -110,18 +110,17 @@ class Line {
 }
 
 clear = function(node) {
+	cleanup = true
 	var root = document.getElementById(node);
 	while (root.firstChild) {
 		root.removeChild(root.firstChild);
 	}
+	cleanup = false
 }
 
 render = function() {
 
-	// empty .results 
-
 	clear("results")
-	document.getElementById("results").style.animation = "pulse 6s infinite"
 
 	var len = Math.floor(Math.max(20, Math.min(xmax, ymax)/10))
 	var path = []
@@ -154,6 +153,9 @@ render = function() {
 
 		}
 	}
+
+	document.getElementById("results").style.animation = "pulse 6s infinite"
+
 	setTimeout(render, 6000)
 }
 
