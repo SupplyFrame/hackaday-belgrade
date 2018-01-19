@@ -56,7 +56,8 @@ class Line {
 				from: this.x1,
 				to: this.x2,
 				dur: this.duration + "s",
-				repeatCount: 1
+				// repeatCount: -1
+				repeatCount: "indefinite"
 			})
 			el.appendChild(animate)
 
@@ -67,7 +68,8 @@ class Line {
 				from: this.y1,
 				to: this.y2,
 				dur: this.duration + "s",
-				repeatCount: 1
+				// repeatCount: -1
+				repeatCount: "indefinite"
 			})
 			el.appendChild(animate)
 
@@ -81,8 +83,8 @@ class Line {
 		document.getElementById(dom_element).appendChild(this.addSVG("line", {
 			x1: this.x1,
 			y1: this.y1,
-			x2: this.x2,
-			y2: this.y2,
+			x2: (this.duration > 0) ? this.x1 : this.x1,
+			y2: (this.duration > 0) ? this.y1 : this.y1,
 			style: "stroke:" + color + ";stroke-width:" + this.width + ";opacity:1.0"
 		}));	
 		document.getElementById(dom_element).appendChild(this.addSVG("circle", {
@@ -107,7 +109,18 @@ class Line {
 
 }
 
+clear = function(node) {
+	var root = document.getElementById(node);
+	while (root.firstChild) {
+		root.removeChild(root.firstChild);
+	}
+}
+
 render = function() {
+
+	// empty .results 
+
+	clear("results")
 	
 	var len = Math.floor(Math.max(20, Math.min(xmax, ymax)/10))
 	var path = []
@@ -122,7 +135,7 @@ render = function() {
 		while (rendered < 64) {
 			
 			var angle = rndAngle()
-			var line = new Line(x, y, angle, len, 1)
+			var line = new Line(x, y, angle, len, 6)
 
 			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.1*ymax, 0.9*ymax)) {
 				line.width = 1 + Math.floor(Math.random()*5)
@@ -140,5 +153,6 @@ render = function() {
 
 		}
 	}
+	setTimeout(render, 6000)
 }
 
