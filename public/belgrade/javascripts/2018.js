@@ -163,6 +163,6 @@ render = function() {
 
 	document.getElementById("results").style.animation = "pulse 6s infinite"
 
-	setTimeout(render, 6000)
 }
 
+setTimeout(render, 6000)
