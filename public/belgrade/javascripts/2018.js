@@ -50,28 +50,31 @@ class Line {
 		if (this.duration > 0) {
 
 			var animate = document.createElementNS('http://www.w3.org/2000/svg', "animate");
-			this.setAttrs(animate, {
-				attributeType: "XML",
-				attributeName: "x2",
-				from: this.x1,
-				to: this.x2,
-				dur: this.duration + "s",
-				// repeatCount: -1
-				repeatCount: "indefinite"
-			})
-			el.appendChild(animate)
 
-			animate = document.createElementNS('http://www.w3.org/2000/svg', "animate");
-			this.setAttrs(animate, {
-				attributeType: "XML",
-				attributeName: "y2",
-				from: this.y1,
-				to: this.y2,
-				dur: this.duration + "s",
-				// repeatCount: -1
-				repeatCount: "indefinite"
-			})
-			el.appendChild(animate)
+			if (attrs.id == 'line') {
+
+				this.setAttrs(animate, {
+					attributeType: "XML",
+					attributeName: "x2",
+					from: this.x1,
+					to: this.x2,
+					dur: this.duration + "s",
+					repeatCount: "indefinite"
+				})
+				el.appendChild(animate)
+
+				animate = document.createElementNS('http://www.w3.org/2000/svg', "animate");
+				this.setAttrs(animate, {
+					attributeType: "XML",
+					attributeName: "y2",
+					from: this.y1,
+					to: this.y2,
+					dur: this.duration + "s",
+					repeatCount: "indefinite"
+				})
+				el.appendChild(animate)
+
+			} 
 
 		}
 
@@ -81,13 +84,17 @@ class Line {
 	render(dom_element) {
 		var color = rndColor()
 		document.getElementById(dom_element).appendChild(this.addSVG("line", {
+			id: "line",
 			x1: this.x1,
 			y1: this.y1,
 			x2: (this.duration > 0) ? this.x1 : this.x2,
 			y2: (this.duration > 0) ? this.y1 : this.y2,
-			style: "stroke:" + color + ";stroke-width:" + this.width + ";opacity:1.0"
+			opacity: 1.0,
+			stroke: color,
+			style: "stroke-width:" + this.width
 		}));	
 		document.getElementById(dom_element).appendChild(this.addSVG("circle", {
+			id: "circle",
 			cx: this.x1,
 			cy: this.y1,
 			r: 6,
