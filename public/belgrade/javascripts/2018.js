@@ -165,4 +165,6 @@ render = function() {
 
 }
 
-setTimeout(render, 6000)
+if (document.readyState === 'complete') {
+  setTimeout(render, 6000)
+}
