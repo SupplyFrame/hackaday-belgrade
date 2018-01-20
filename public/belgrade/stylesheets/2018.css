@@ -104,19 +104,23 @@ text {
 }
 
 #results {
-	background-color: #0039A6;
+	background-color: #000;
 }
 
 @keyframes pulse {
   0% {
-	background-color: #0039A6;
+	background-color: #000;
     opacity: 0;
   }
-  40% {
+  25% {
+	background-color: #000;
+    opacity: 1;
+  }
+  50% {
   	background-color: #000;
     opacity: 1;
   }
-  60% {
+  75% {
   	background-color: #000;
     opacity: 1;
   }
@@ -125,4 +129,3 @@ text {
     opacity: 0;
   }
 }
-
