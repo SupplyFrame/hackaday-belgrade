@@ -102,12 +102,6 @@ class Line {
 			fill: color,
 			style: "stroke-width:0"
 		}));
-		// document.getElementById('results').appendChild(this.addSVG('text', {
-		// 	x: this.x1 + 10,
-		// 	y: this.y1 + 10,
-		// 	fill: color,
-		// })).appendChild(document.createTextNode("(" + this.x1 + "," + this.y1 + ")"));
-
 	}
 
 	toString() {
