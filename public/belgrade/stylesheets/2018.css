@@ -103,6 +103,10 @@ text {
 	text-decoration: none;
 }
 
+.project-url a {
+	color: gray;
+}
+
 #results {
 	background-color: #000;
 }
