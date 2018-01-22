@@ -133,12 +133,17 @@ render = function() {
 
 		var rendered = 0
 
+		var x_start = 0.05*xmax
+		var x_end = (xmax > 800) ? 0.62*xmax : 0.4*xmax
+		var y_start = (ymax > 600) ? 0.1*ymax : 0.2*ymax
+		var y_end = (ymax > 600) ? 0.9*ymax : 0.8*ymax
+
 		while (rendered < 64) {
 			
 			var angle = rndAngle()
 			var line = new Line(x, y, angle, len, 6)
 
-			if (line.inBounds(0.05*xmax, 0.62*xmax, 0.1*ymax, 0.9*ymax)) {
+			if (line.inBounds(x_start, x_end, y_start, y_end)) {
 				line.width = 1 + Math.floor(Math.random()*5)
 				rendered++
 				line.render('results')
