@@ -158,12 +158,12 @@ text {
 	font-weight: bold;
 	font-size: 1.2vw;
 	color: #FFFFFF;
-	margin: 10px 0px 0 0;
+	margin: 20px 0px 0 0;
     padding: 10px 0px;
 }
 
 #button a {
 	text-decoration: none;
 	color: white;
-	margin-left: 25%;
+	margin-left: 20%;
 }
